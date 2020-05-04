@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -44,6 +47,14 @@ public class SecondActivity extends AppCompatActivity {
         }
         aa = new HolidayAdapter(this,R.layout.row,holiday);
         lvHolidays.setAdapter(aa);
+
+        lvHolidays.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Holidays current = holiday.get(position);
+                Toast.makeText(SecondActivity.this,current.getHolidayName() +" Date: " + current.getHolidayDates(),Toast.LENGTH_LONG).show();
+            }
+        });
 
 
 
